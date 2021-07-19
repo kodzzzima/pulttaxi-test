@@ -33,11 +33,12 @@ class InputNumberFragment : Fragment(R.layout.fragment_input_number) {
         binding.buttonContinue.isEnabled = false
 
         viewModel.smsCodeResponse.observe(viewLifecycleOwner, {
-            binding.progressbar.isVisible = true
+            binding.progressbar.isVisible = it is Resource.Loading
             when (it) {
                 is Resource.Success -> {
                     lifecycleScope.launch {
                         viewModel.saveUserPhone("7" + binding.editText.text.toString())
+
                         findNavController()
                             .navigate(R.id.action_inputNumberFragment_to_inputCodeFragment)
                     }

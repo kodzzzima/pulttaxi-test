@@ -12,9 +12,9 @@ object UserPreferences {
 
     private lateinit var preferences: SharedPreferences
 
-    fun getPreference(context: Context):SharedPreferences {
+    fun getPreference(context: Context): SharedPreferences {
         preferences = context.getSharedPreferences(NAME_PREF, Context.MODE_PRIVATE)
-        return  preferences
+        return preferences
     }
 
     fun getUserPhone(): String? {

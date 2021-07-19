@@ -1,7 +1,6 @@
 package com.example.testapp.ui.inputCode
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.core.view.isVisible
 import androidx.core.widget.addTextChangedListener
@@ -16,6 +15,7 @@ import com.example.testapp.databinding.FragmentInputCodeBinding
 import com.example.testapp.ui.ViewModelFactory
 import com.example.testapp.util.Resource
 import com.example.testapp.util.handleApiError
+import com.example.testapp.util.snackBar
 import kotlinx.coroutines.launch
 
 class InputCodeFragment : Fragment(R.layout.fragment_input_code) {
@@ -30,17 +30,20 @@ class InputCodeFragment : Fragment(R.layout.fragment_input_code) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentInputCodeBinding.bind(view)
         binding.progressbar.isVisible = false
-        binding.buttonDone.isClickable = false
 
         viewModel.tokenResponse.observe(viewLifecycleOwner, {
             binding.progressbar.isVisible = it is Resource.Loading
             when (it) {
                 is Resource.Success -> {
-                    lifecycleScope.launch {
-                        viewModel.saveUserToken(
-                            it.value.token!!,
-                        )
-//                        findNavController().navigate(R.id.action_inputNumberFragment_to_inputCodeFragment)
+                    if (it.value.status == "error") {
+                        requireView().snackBar("Неверный код")
+                    } else {
+                        lifecycleScope.launch {
+                            viewModel.saveUserToken(
+                                it.value.token!!,
+                            )
+                            findNavController().navigate(R.id.action_inputNumberFragment_to_inputCodeFragment)
+                        }
                     }
                 }
                 is Resource.Failure -> handleApiError(it)
@@ -48,7 +51,6 @@ class InputCodeFragment : Fragment(R.layout.fragment_input_code) {
         })
 
         viewModel.timerFlag.observe(viewLifecycleOwner, {
-            Log.d("testLog","yeah i am here")
             if (it == true) {
                 binding.buttonRepeatSmsCode.visibility = View.VISIBLE
                 binding.repeatSmsCode.visibility = View.GONE
@@ -89,14 +91,13 @@ class InputCodeFragment : Fragment(R.layout.fragment_input_code) {
         }
 
         binding.buttonDone.setOnClickListener {
-            findNavController().navigate(R.id.action_inputCodeFragment_to_userInfoDialogFragment)
-//            if (binding.inputCode1.text.isNotEmpty()
-//                && binding.inputCode2.text.isNotEmpty()
-//                && binding.inputCode3.text.isNotEmpty()
-//                && binding.inputCode4.text.isNotEmpty()
-//            ) {
-//                enterCode()
-//            }
+            if (binding.inputCode1.text.isNotEmpty()
+                && binding.inputCode2.text.isNotEmpty()
+                && binding.inputCode3.text.isNotEmpty()
+                && binding.inputCode4.text.isNotEmpty()
+            ) {
+                enterCode()
+            }
         }
 
         binding.buttonRepeatSmsCode.setOnClickListener {
@@ -124,6 +125,6 @@ class InputCodeFragment : Fragment(R.layout.fragment_input_code) {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        if (viewModel.timer == null) viewModel.timer!!.cancel()
+        if (viewModel.timer != null) viewModel.timer!!.cancel()
     }
 }

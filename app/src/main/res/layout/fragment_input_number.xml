@@ -7,7 +7,6 @@
     android:background="@color/blue"
     tools:context=".ui.inputNumber.InputNumberFragment">
 
-
     <ProgressBar
         android:id="@+id/progressbar"
         android:layout_width="wrap_content"
@@ -54,7 +53,7 @@
 
             android:text="@string/phone_prefix"
             android:textColor="@color/white"
-            android:textSize="@dimen/text_size_1" />
+            android:textSize="@dimen/text_size_large" />
 
         <EditText
             android:id="@+id/edit_text"
@@ -65,13 +64,14 @@
             android:backgroundTint="@color/blue"
             android:hint="@string/input_phone_number"
             android:imeOptions="actionDone"
-            android:singleLine="true"
             android:inputType="number"
+            android:singleLine="true"
 
             android:textColor="@color/white"
             android:textColorHint="@color/white"
             android:textCursorDrawable="@color/white"
-            android:textSize="@dimen/text_size_1" />
+            android:textSize="@dimen/text_size_large"
+            android:autofillHints="" />
     </LinearLayout>
 
 
@@ -87,15 +87,15 @@
         app:layout_constraintTop_toBottomOf="@id/input_number_layout" />
 
     <Button
-        android:enabled="false"
         android:id="@+id/button_continue"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/margin_padding_size_medium"
         android:layout_marginVertical="@dimen/margin_padding_size_small"
-
         android:backgroundTint="@color/white"
-        android:paddingVertical="15dp"
+        android:paddingVertical="@dimen/margin_padding_size_medium"
+        android:enabled="false"
+
         android:text="@string/button_input_number_continue"
         android:textColor="@color/blue"
         android:textSize="@dimen/text_size_medium"
@@ -113,7 +113,7 @@
 
         android:text="@string/warning"
         android:textColor="@color/white"
-        android:textSize="@dimen/text_size_micro"
+        android:textSize="@dimen/text_size_small"
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

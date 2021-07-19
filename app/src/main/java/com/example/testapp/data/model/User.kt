@@ -12,5 +12,5 @@ data class User(
     val phone_number: String,
     val rating: String?,
     val sex: String?,
-    val status: Int
+    val status: String,
 )

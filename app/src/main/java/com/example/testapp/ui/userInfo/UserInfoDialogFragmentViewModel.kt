@@ -9,7 +9,7 @@ import com.example.testapp.data.repository.AppRepository
 import com.example.testapp.util.Resource
 import kotlinx.coroutines.launch
 
-class UserInfoDialogFragmentViewModel (
+class UserInfoDialogFragmentViewModel(
     private val repository: AppRepository,
 ) : ViewModel() {
 
@@ -28,7 +28,7 @@ class UserInfoDialogFragmentViewModel (
         }
     }
 
-    private fun getUserInfo(token: String){
+    private fun getUserInfo(token: String) {
         viewModelScope.launch {
             _userResponse.value = Resource.Loading
             _userResponse.value = repository.getUser(token)
@@ -38,6 +38,4 @@ class UserInfoDialogFragmentViewModel (
     private suspend fun loadUserToken(): String? {
         return repository.loadUserToken()
     }
-
-
 }

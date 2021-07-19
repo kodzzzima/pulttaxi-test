@@ -3,9 +3,9 @@ package com.example.testapp.ui
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.testapp.data.repository.AppRepository
-import com.example.testapp.ui.userInfo.UserInfoDialogFragmentViewModel
 import com.example.testapp.ui.inputCode.InputCodeFragmentViewModel
 import com.example.testapp.ui.inputNumber.InputNumberFragmentViewModel
+import com.example.testapp.ui.userInfo.UserInfoDialogFragmentViewModel
 
 class ViewModelFactory(private val appRepository: AppRepository) :
     ViewModelProvider.Factory {

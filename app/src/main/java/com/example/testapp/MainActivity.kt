@@ -1,9 +1,7 @@
 package com.example.testapp
 
-import android.content.Context
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.testapp.data.model.User
+import androidx.appcompat.app.AppCompatActivity
 import com.example.testapp.util.UserPreferences
 
 class MainActivity : AppCompatActivity() {

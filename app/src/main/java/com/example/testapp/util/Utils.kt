@@ -3,7 +3,6 @@ package com.example.testapp.util
 import android.graphics.Color
 import android.view.View
 import androidx.fragment.app.Fragment
-import com.example.testapp.ui.inputNumber.InputNumberFragment
 import com.google.android.material.snackbar.Snackbar
 
 fun Fragment.handleApiError(
@@ -14,9 +13,7 @@ fun Fragment.handleApiError(
             "Проверьте Интернет соединение"
         )
         failure.errorCode == 400 -> {
-            if (this is InputNumberFragment) {
-                requireView().snackBar("Вы ввели некорректный номер")
-            }
+            requireView().snackBar("Вы ввели некорректный номер")
         }
         failure.errorCode == 401 -> {
             requireView().snackBar("Ошибка авторизации")

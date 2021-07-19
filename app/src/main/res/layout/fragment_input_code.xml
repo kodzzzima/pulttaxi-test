@@ -26,7 +26,7 @@
         android:layout_height="wrap_content"
         android:text="@string/input_code_from_sms"
         android:textColor="@color/black"
-        android:textSize="@dimen/text_size_1"
+        android:textSize="@dimen/text_size_large"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -46,27 +46,29 @@
             android:id="@+id/input_code1"
             style="@style/input_code_style"
             android:importantForAutofill="no"
-            android:imeOptions="actionNext"/>
+            android:imeOptions="actionNext"
+            tools:ignore="LabelFor" />
 
         <EditText
             android:id="@+id/input_code2"
             style="@style/input_code_style"
             android:importantForAutofill="no"
-            android:imeOptions="actionNext"/>
+            android:imeOptions="actionNext"
+            tools:ignore="LabelFor" />
 
         <EditText
             android:id="@+id/input_code3"
             style="@style/input_code_style"
             android:importantForAutofill="no"
-            android:imeOptions="actionNext"/>
+            android:imeOptions="actionNext"
+            tools:ignore="LabelFor" />
 
         <EditText
             android:id="@+id/input_code4"
             style="@style/input_code_style"
             android:importantForAutofill="no"
-            android:imeOptions="actionDone"/>
-
-
+            android:imeOptions="actionDone"
+            tools:ignore="LabelFor" />
     </LinearLayout>
 
     <TextView
@@ -78,7 +80,7 @@
 
         android:text="@string/repeat_sms_code"
         android:textColor="@color/gray"
-        android:textSize="@dimen/text_size_micro"
+        android:textSize="@dimen/text_size_small"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/layout_input_code"/>
@@ -90,10 +92,10 @@
         android:layout_marginHorizontal="@dimen/margin_padding_size_medium"
         android:layout_marginVertical="@dimen/margin_padding_size_small"
         android:backgroundTint="@color/blue"
-        android:paddingVertical="15dp"
+        android:paddingVertical="@dimen/margin_padding_size_medium"
         android:text="@string/button_repeat_sms_code"
         android:textColor="@color/white"
-        android:textSize="@dimen/text_size_micro"
+        android:textSize="@dimen/text_size_small"
         android:visibility="gone"
 
         app:layout_constraintTop_toBottomOf="@id/layout_input_code"
@@ -108,7 +110,7 @@
         android:layout_marginVertical="@dimen/margin_padding_size_small"
         android:backgroundTint="@color/blue"
 
-        android:paddingVertical="15dp"
+        android:paddingVertical="@dimen/margin_padding_size_medium"
         android:text="@string/button_input_code_done"
         android:textColor="@color/white"
         android:textSize="@dimen/text_size_medium"

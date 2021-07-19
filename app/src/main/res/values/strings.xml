@@ -18,6 +18,6 @@
     <string name="dialog_birthday">День рождения:</string>
     <string name="dialog_city">Город:</string>
     <string name="dialog_rating">Рейтинг:</string>
-    <string name="button_ok">ok</string>
+    <string name="button_ok">OK</string>
     <string name="sep">-</string>
 </resources>

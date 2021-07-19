@@ -11,10 +11,10 @@ import com.example.testapp.R
 import com.example.testapp.data.api.RetrofitBuilder
 import com.example.testapp.data.repository.AppRepositoryImpl
 import com.example.testapp.databinding.DialogUserInfoBinding
-import com.example.testapp.databinding.FragmentInputNumberBinding
 import com.example.testapp.ui.ViewModelFactory
 import com.example.testapp.util.Resource
 import com.example.testapp.util.handleApiError
+import com.example.testapp.util.snackBar
 
 class UserInfoDialogFragment : DialogFragment() {
 
@@ -37,17 +37,21 @@ class UserInfoDialogFragment : DialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.userResponse.observe(viewLifecycleOwner, { response->
+        viewModel.userResponse.observe(viewLifecycleOwner, { response ->
             when (response) {
                 is Resource.Success -> {
-                    response.value.user.let { user ->
-                        binding.nameValue.text = user.name
-                        binding.sexValue.text = user.sex
-                        binding.phoneNumberValue.text = user.phone_number
-                        binding.emailValue.text = user.email
-                        binding.birthdayValue.text = user.birth_day
-                        binding.cityValue.text = user.city
-                        binding.ratingValue.text = user.rating
+                    if (response.value.user.status == "error") {
+                        requireView().snackBar("Неверный код")
+                    } else {
+                        response.value.user.let { user ->
+                            binding.nameValue.text = user.name
+                            binding.sexValue.text = user.sex
+                            binding.phoneNumberValue.text = user.phone_number
+                            binding.emailValue.text = user.email
+                            binding.birthdayValue.text = user.birth_day
+                            binding.cityValue.text = user.city
+                            binding.ratingValue.text = user.rating
+                        }
                     }
                 }
                 is Resource.Failure -> handleApiError(response)
