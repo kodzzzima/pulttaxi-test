@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/inputNumberFragment">
+
+    <fragment
+        android:id="@+id/inputNumberFragment"
+        android:name="com.example.testapp.ui.inputNumber.InputNumberFragment"
+        android:label="fragment_input_number"
+        tools:layout="@layout/fragment_input_number" >
+        <action
+            android:id="@+id/action_inputNumberFragment_to_inputCodeFragment"
+            app:destination="@id/inputCodeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/inputCodeFragment"
+        android:name="com.example.testapp.ui.inputCode.InputCodeFragment"
+        android:label="fragment_input_code"
+        tools:layout="@layout/fragment_input_code" >
+        <action
+            android:id="@+id/action_inputCodeFragment_to_userInfoDialogFragment"
+            app:destination="@id/userInfoDialogFragment" />
+        <action
+            android:id="@+id/action_inputCodeFragment_to_inputNumberFragment"
+            app:destination="@id/inputNumberFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/userInfoDialogFragment"
+        android:name="com.example.testapp.ui.userInfo.UserInfoDialogFragment"
+        android:label="UserInfoDialogFragment"
+        tools:layout="@layout/dialog_user_info">
+        <action
+            android:id="@+id/action_userInfoDialogFragment_to_inputCodeFragment"
+            app:destination="@id/inputCodeFragment"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/inputCodeFragment"
+            app:popUpToInclusive="true" />
+    </dialog>
+</navigation>

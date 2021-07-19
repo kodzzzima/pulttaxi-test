@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Test App</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="button_input_number_continue">Продолжить</string>
+    <string name="button_input_code_done">Готово</string>
+    <string name="warning">Ознакомьтесь с договором-оферты.
+        Регистрируясь или авторизуясь, вы принимаете его условия</string>
+    <string name="phone_prefix">+7</string>
+    <string name="input_phone_number">Введите номер телефона</string>
+    <string name="input_code_from_sms">Введите код из СМС</string>
+    <string name="repeat_sms_code">Повторно отправить СМС с кодом можно будет через 15 секунд</string>
+    <string name="button_repeat_sms_code">Отправить код повторно</string>
+    <string name="dialog_title">Информация о пользователе</string>
+    <string name="dialog_name">Имя:</string>
+    <string name="dialog_sex">Пол:</string>
+    <string name="dialog_phone_number">Номер телефона:</string>
+    <string name="dialog_email">Email:</string>
+    <string name="dialog_birthday">День рождения:</string>
+    <string name="dialog_city">Город:</string>
+    <string name="dialog_rating">Рейтинг:</string>
+    <string name="button_ok">ok</string>
+    <string name="sep">-</string>
+</resources>
