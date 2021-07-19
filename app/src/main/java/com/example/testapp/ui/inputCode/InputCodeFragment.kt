@@ -28,37 +28,11 @@ class InputCodeFragment : Fragment(R.layout.fragment_input_code) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         binding = FragmentInputCodeBinding.bind(view)
         binding.progressbar.isVisible = false
 
-        viewModel.tokenResponse.observe(viewLifecycleOwner, {
-            binding.progressbar.isVisible = it is Resource.Loading
-            when (it) {
-                is Resource.Success -> {
-                    if (it.value.status == "error") {
-                        requireView().snackBar("Неверный код")
-                    } else {
-                        lifecycleScope.launch {
-                            viewModel.saveUserToken(
-                                it.value.token!!,
-                            )
-                            findNavController().navigate(R.id.action_inputNumberFragment_to_inputCodeFragment)
-                        }
-                    }
-                }
-                is Resource.Failure -> handleApiError(it)
-            }
-        })
-
-        viewModel.timerFlag.observe(viewLifecycleOwner, {
-            if (it == true) {
-                binding.buttonRepeatSmsCode.visibility = View.VISIBLE
-                binding.repeatSmsCode.visibility = View.GONE
-            } else {
-                binding.buttonRepeatSmsCode.visibility = View.GONE
-                binding.repeatSmsCode.visibility = View.VISIBLE
-            }
-        })
+        setupObservers()
 
         binding.inputCode1.addTextChangedListener {
             if (binding.inputCode1.text.length == 1) {
@@ -103,6 +77,37 @@ class InputCodeFragment : Fragment(R.layout.fragment_input_code) {
         binding.buttonRepeatSmsCode.setOnClickListener {
             sendSmsCode()
         }
+    }
+
+    private fun setupObservers() {
+        viewModel.tokenResponse.observe(viewLifecycleOwner, {
+            binding.progressbar.isVisible = it is Resource.Loading
+            when (it) {
+                is Resource.Success -> {
+                    if (it.value.status == "error") {
+                        requireView().snackBar("Неверный код")
+                    } else {
+                        lifecycleScope.launch {
+                            viewModel.saveUserToken(
+                                it.value.token!!,
+                            )
+                            findNavController().navigate(R.id.action_inputNumberFragment_to_inputCodeFragment)
+                        }
+                    }
+                }
+                is Resource.Failure -> handleApiError(it)
+            }
+        })
+
+        viewModel.timerFlag.observe(viewLifecycleOwner, {
+            if (it == true) {
+                binding.buttonRepeatSmsCode.visibility = View.VISIBLE
+                binding.repeatSmsCode.visibility = View.GONE
+            } else {
+                binding.buttonRepeatSmsCode.visibility = View.GONE
+                binding.repeatSmsCode.visibility = View.VISIBLE
+            }
+        })
     }
 
     private fun sendSmsCode() {

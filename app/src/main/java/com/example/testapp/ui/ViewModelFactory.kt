@@ -21,7 +21,6 @@ class ViewModelFactory(private val appRepository: AppRepository) :
         if (modelClass.isAssignableFrom(UserInfoDialogFragmentViewModel::class.java)) {
             return UserInfoDialogFragmentViewModel(appRepository) as T
         }
-
         throw IllegalArgumentException("Unknown class name")
     }
 }

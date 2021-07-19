@@ -37,6 +37,15 @@ class UserInfoDialogFragment : DialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        setupObserver()
+
+        binding.buttonOk.setOnClickListener {
+            findNavController().navigate(R.id.action_userInfoDialogFragment_to_inputCodeFragment)
+        }
+    }
+
+    private fun setupObserver() {
         viewModel.userResponse.observe(viewLifecycleOwner, { response ->
             when (response) {
                 is Resource.Success -> {
@@ -57,10 +66,6 @@ class UserInfoDialogFragment : DialogFragment() {
                 is Resource.Failure -> handleApiError(response)
             }
         })
-
-        binding.buttonOk.setOnClickListener {
-            findNavController().navigate(R.id.action_userInfoDialogFragment_to_inputCodeFragment)
-        }
     }
 
     override fun onDestroyView() {

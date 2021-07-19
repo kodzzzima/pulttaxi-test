@@ -32,6 +32,19 @@ class InputNumberFragment : Fragment(R.layout.fragment_input_number) {
         binding.progressbar.isVisible = false
         binding.buttonContinue.isEnabled = false
 
+        setupObserver()
+
+        binding.editText.addTextChangedListener {
+            binding.buttonContinue.isEnabled = binding.editText.text.length == 10
+        }
+
+        binding.buttonContinue.setOnClickListener {
+            enterNumber()
+            binding.editText.clearFocus()
+        }
+    }
+
+    private fun setupObserver() {
         viewModel.smsCodeResponse.observe(viewLifecycleOwner, {
             binding.progressbar.isVisible = it is Resource.Loading
             when (it) {
@@ -46,15 +59,6 @@ class InputNumberFragment : Fragment(R.layout.fragment_input_number) {
                 is Resource.Failure -> handleApiError(it)
             }
         })
-
-        binding.editText.addTextChangedListener {
-            binding.buttonContinue.isEnabled = binding.editText.text.length == 10
-        }
-
-        binding.buttonContinue.setOnClickListener {
-            enterNumber()
-            binding.editText.clearFocus()
-        }
     }
 
     private fun enterNumber() {

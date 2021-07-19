@@ -1,6 +1,5 @@
 package com.example.testapp.data.api
 
-import android.util.Log
 import com.example.testapp.util.Resource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -8,7 +7,7 @@ import retrofit2.HttpException
 
 interface SafeApiCall {
     suspend fun <T> safeApiCall(
-        apiCall: suspend () -> T
+        apiCall: suspend () -> T,
     ): Resource<T> {
         return withContext(Dispatchers.IO) {
             try {
