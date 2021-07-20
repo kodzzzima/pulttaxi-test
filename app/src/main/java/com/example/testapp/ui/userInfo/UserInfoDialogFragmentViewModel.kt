@@ -24,7 +24,9 @@ class UserInfoDialogFragmentViewModel(
     private fun getUserFromToken() {
         viewModelScope.launch {
             val token = loadUserToken()
-            token?.let { getUserInfo(it) }
+            if (token != null) {
+                getUserInfo(token)
+            }
         }
     }
 

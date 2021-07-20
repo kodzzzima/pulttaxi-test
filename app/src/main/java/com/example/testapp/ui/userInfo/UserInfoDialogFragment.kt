@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -38,6 +39,9 @@ class UserInfoDialogFragment : DialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.progressbar.isVisible = true
+        binding.layoutInfo.visibility = View.GONE
+
         setupObserver()
 
         binding.buttonOk.setOnClickListener {
@@ -47,19 +51,21 @@ class UserInfoDialogFragment : DialogFragment() {
 
     private fun setupObserver() {
         viewModel.userResponse.observe(viewLifecycleOwner, { response ->
+            binding.progressbar.isVisible = response is Resource.Loading
+            binding.layoutInfo.isVisible = response !is Resource.Loading
             when (response) {
                 is Resource.Success -> {
-                    if (response.value.user.status == "error") {
+                    if (response.value.status == "error") {
                         requireView().snackBar("Неверный код")
                     } else {
-                        response.value.user.let { user ->
-                            binding.nameValue.text = user.name
-                            binding.sexValue.text = user.sex
+                        response.value.let { user ->
+                            binding.nameValue.text = user.name ?: "-"
+                            binding.sexValue.text = user.sex ?: "-"
                             binding.phoneNumberValue.text = user.phone_number
-                            binding.emailValue.text = user.email
-                            binding.birthdayValue.text = user.birth_day
-                            binding.cityValue.text = user.city
-                            binding.ratingValue.text = user.rating
+                            binding.emailValue.text = user.email ?: "-"
+                            binding.birthdayValue.text = user.birth_day ?: "-"
+                            binding.cityValue.text = user.city ?: "-"
+                            binding.ratingValue.text = user.rating ?: "-"
                         }
                     }
                 }

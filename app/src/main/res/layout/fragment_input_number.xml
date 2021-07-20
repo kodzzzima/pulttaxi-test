@@ -36,55 +36,51 @@
 
     <LinearLayout
         android:id="@+id/input_number_layout"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="horizontal"
 
         app:layout_constraintBottom_toTopOf="@id/button_continue"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/image_car"
-        app:layout_constraintVertical_bias="0.9">
+        app:layout_constraintStart_toStartOf="parent">
 
-        <TextView
-            android:layout_width="wrap_content"
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/text_input_layout"
+            android:layout_width="350dp"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/margin_padding_size_medium"
 
-            android:text="@string/phone_prefix"
-            android:textColor="@color/white"
-            android:textSize="@dimen/text_size_large" />
-
-        <EditText
-            android:id="@+id/edit_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_padding_size_medium"
-
-            android:backgroundTint="@color/blue"
+            android:background="@color/blue"
             android:hint="@string/input_phone_number"
-            android:imeOptions="actionDone"
-            android:inputType="number"
-            android:singleLine="true"
-
-            android:textColor="@color/white"
             android:textColorHint="@color/white"
-            android:textCursorDrawable="@color/white"
             android:textSize="@dimen/text_size_large"
-            android:autofillHints="" />
+
+            app:boxBackgroundColor="@color/blue"
+            app:boxStrokeColor="@color/white"
+            app:errorEnabled="true"
+            app:helperTextEnabled="true"
+            app:hintTextAppearance="@style/TextLabel"
+            app:hintTextColor="@color/white"
+            app:prefixText="+7"
+            app:prefixTextAppearance="@style/TextAppearance.AppCompat.Large"
+            app:prefixTextColor="@color/white">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_padding_size_medium"
+                android:inputType="phone"
+                android:singleLine="true"
+                android:textColor="@color/white"
+                android:textCursorDrawable="@color/white"
+                android:textSize="@dimen/text_size_large" />
+
+        </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
 
-
-    <View
-        android:id="@+id/separator"
-        android:layout_width="350dp"
-        android:layout_height="1dp"
-
-        android:background="@color/white"
-
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/input_number_layout" />
 
     <Button
         android:id="@+id/button_continue"
@@ -94,7 +90,6 @@
         android:layout_marginVertical="@dimen/margin_padding_size_small"
         android:backgroundTint="@color/white"
         android:paddingVertical="@dimen/margin_padding_size_medium"
-        android:enabled="false"
 
         android:text="@string/button_input_number_continue"
         android:textColor="@color/blue"

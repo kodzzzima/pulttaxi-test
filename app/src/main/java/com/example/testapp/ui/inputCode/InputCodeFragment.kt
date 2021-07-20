@@ -91,7 +91,7 @@ class InputCodeFragment : Fragment(R.layout.fragment_input_code) {
                             viewModel.saveUserToken(
                                 it.value.token!!,
                             )
-                            findNavController().navigate(R.id.action_inputNumberFragment_to_inputCodeFragment)
+                            findNavController().navigate(R.id.action_inputCodeFragment_to_userInfoDialogFragment)
                         }
                     }
                 }

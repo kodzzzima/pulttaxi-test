@@ -18,7 +18,8 @@
         android:id="@+id/inputCodeFragment"
         android:name="com.example.testapp.ui.inputCode.InputCodeFragment"
         android:label="fragment_input_code"
-        tools:layout="@layout/fragment_input_code" >
+        tools:layout="@layout/fragment_input_code"
+        app:startDestination="@id/action_inputCodeFragment_to_inputNumberFragment">
         <action
             android:id="@+id/action_inputCodeFragment_to_userInfoDialogFragment"
             app:destination="@id/userInfoDialogFragment" />

@@ -37,4 +37,12 @@ fun View.snackBar(message: String, action: (() -> Unit)? = null) {
     snackBar.show()
 }
 
+fun String.removeElements(elements: List<String>): String {
+    var newString = this
+    elements.forEach {
+        newString = newString.replace(it, "")
+    }
+    return newString
+}
+
 

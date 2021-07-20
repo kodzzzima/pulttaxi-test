@@ -14,130 +14,146 @@
         android:textColor="@color/black"
         android:textSize="20sp" />
 
-    <LinearLayout
+    <ProgressBar
+        android:id="@+id/progressbar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/margin_padding_size_small"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/name"
-            style="@style/dialog_user_data"
-            android:layout_marginEnd="@dimen/margin_padding_size_small"
-            android:text="@string/dialog_name" />
-
-        <TextView
-            android:id="@+id/name_value"
-            style="@style/dialog_user_data"
-            android:text="@string/sep" />
-    </LinearLayout>
+        android:layout_gravity="center"
+        android:theme="@style/ProgressBarStyleBlue"
+        android:visibility="gone" />
 
     <LinearLayout
+        android:id="@+id/layout_info"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/margin_padding_size_small"
-        android:orientation="horizontal">
+        android:orientation="vertical"
+        android:visibility="visible">
 
-        <TextView
-            android:id="@+id/sex"
-            style="@style/dialog_user_data"
-            android:layout_marginEnd="@dimen/margin_padding_size_small"
-            android:text="@string/dialog_sex" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_padding_size_small"
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/sex_value"
-            style="@style/dialog_user_data"
-            android:text="@string/sep" />
-    </LinearLayout>
+            <TextView
+                android:id="@+id/name"
+                style="@style/dialog_user_data"
+                android:layout_marginEnd="@dimen/margin_padding_size_small"
+                android:text="@string/dialog_name" />
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/margin_padding_size_small"
-        android:orientation="horizontal">
+            <TextView
+                android:id="@+id/name_value"
+                style="@style/dialog_user_data"
+                android:text="@string/sep" />
+        </LinearLayout>
 
-        <TextView
-            android:id="@+id/phone_number"
-            style="@style/dialog_user_data"
-            android:layout_marginEnd="@dimen/margin_padding_size_small"
-            android:text="@string/dialog_phone_number" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_padding_size_small"
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/phone_number_value"
-            style="@style/dialog_user_data"
-            android:text="@string/sep" />
-    </LinearLayout>
+            <TextView
+                android:id="@+id/sex"
+                style="@style/dialog_user_data"
+                android:layout_marginEnd="@dimen/margin_padding_size_small"
+                android:text="@string/dialog_sex" />
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/margin_padding_size_small"
-        android:orientation="horizontal">
+            <TextView
+                android:id="@+id/sex_value"
+                style="@style/dialog_user_data"
+                android:text="@string/sep" />
+        </LinearLayout>
 
-        <TextView
-            android:id="@+id/email"
-            style="@style/dialog_user_data"
-            android:layout_marginEnd="@dimen/margin_padding_size_small"
-            android:text="@string/dialog_email" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_padding_size_small"
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/email_value"
-            style="@style/dialog_user_data"
-            android:text="@string/sep" />
-    </LinearLayout>
+            <TextView
+                android:id="@+id/phone_number"
+                style="@style/dialog_user_data"
+                android:layout_marginEnd="@dimen/margin_padding_size_small"
+                android:text="@string/dialog_phone_number" />
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/margin_padding_size_small"
-        android:orientation="horizontal">
+            <TextView
+                android:id="@+id/phone_number_value"
+                style="@style/dialog_user_data"
+                android:text="@string/sep" />
+        </LinearLayout>
 
-        <TextView
-            android:id="@+id/birthday"
-            style="@style/dialog_user_data"
-            android:layout_marginEnd="@dimen/margin_padding_size_small"
-            android:text="@string/dialog_birthday" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_padding_size_small"
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/birthday_value"
-            style="@style/dialog_user_data"
-            android:text="@string/sep" />
-    </LinearLayout>
+            <TextView
+                android:id="@+id/email"
+                style="@style/dialog_user_data"
+                android:layout_marginEnd="@dimen/margin_padding_size_small"
+                android:text="@string/dialog_email" />
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/margin_padding_size_small"
-        android:orientation="horizontal">
+            <TextView
+                android:id="@+id/email_value"
+                style="@style/dialog_user_data"
+                android:text="@string/sep" />
+        </LinearLayout>
 
-        <TextView
-            android:id="@+id/city"
-            style="@style/dialog_user_data"
-            android:layout_marginEnd="@dimen/margin_padding_size_small"
-            android:text="@string/dialog_city" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_padding_size_small"
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/city_value"
-            style="@style/dialog_user_data"
-            android:text="@string/sep" />
-    </LinearLayout>
+            <TextView
+                android:id="@+id/birthday"
+                style="@style/dialog_user_data"
+                android:layout_marginEnd="@dimen/margin_padding_size_small"
+                android:text="@string/dialog_birthday" />
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/margin_padding_size_small"
-        android:orientation="horizontal">
+            <TextView
+                android:id="@+id/birthday_value"
+                style="@style/dialog_user_data"
+                android:text="@string/sep" />
+        </LinearLayout>
 
-        <TextView
-            android:id="@+id/rating"
-            style="@style/dialog_user_data"
-            android:layout_marginEnd="@dimen/margin_padding_size_small"
-            android:text="@string/dialog_rating" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_padding_size_small"
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/rating_value"
-            style="@style/dialog_user_data"
-            android:text="@string/sep" />
+            <TextView
+                android:id="@+id/city"
+                style="@style/dialog_user_data"
+                android:layout_marginEnd="@dimen/margin_padding_size_small"
+                android:text="@string/dialog_city" />
+
+            <TextView
+                android:id="@+id/city_value"
+                style="@style/dialog_user_data"
+                android:text="@string/sep" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_padding_size_small"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/rating"
+                style="@style/dialog_user_data"
+                android:layout_marginEnd="@dimen/margin_padding_size_small"
+                android:text="@string/dialog_rating" />
+
+            <TextView
+                android:id="@+id/rating_value"
+                style="@style/dialog_user_data"
+                android:text="@string/sep" />
+        </LinearLayout>
     </LinearLayout>
 
     <Button
